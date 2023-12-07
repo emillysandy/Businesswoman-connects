@@ -7,29 +7,30 @@ describe('Service Class', () => {
     });
 
     test('Criação da instância do Service', () => {
-        const user = new User("Beatriz", "121564943121", "Recife", "Pernambuco");
-        const service = new Service('Contadora', 'Contabilidade', 'SVC001', user);
-        const result = service.register('Contadora', 'Contabilidade', 'SVC001');
+        const user = new User('Fernanda', '56789034', 'Caruaru/PE', '(81)990436789', '@fernanda_confecoes');
+        const service = new Service('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas', user);
+        const result = service.register('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas');
     });
 
     test('Cadastro de serviço com dados válidos', () => {
-        const user = new User("Beatriz", "121564943121", "Recife", "Pernambuco");
-        const service = new Service('Contadora', 'Contabilidade', 'SVC001', user);
-        const result = service.register('Contadora', 'Contabilidade', 'SVC001');
+        const user = new User('Fernanda', '56789034', 'Caruaru/PE', '(81)990436789', '@fernanda_confecoes');
+        const service = new Service('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas', user);
+        const result = service.register('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas');
 
         expect(result).toBe('Serviço cadastrado com sucesso!');
         expect(Service.services.length).toBe(1);
         expect(Service.services[0].name).toBe('Contadora');
         expect(Service.services[0].category).toBe('Contabilidade');
         expect(Service.services[0].id).toBe('SVC001');
+        expect(Service.services[0].description).toBe('Presto serviços de contabilidade para pessoas autônomas');
     });
 
     test('Erro ao cadastrar serviço duplicado', () => {
-        const user = new User("Beatriz", "121564943121", "Recife", "Pernambuco");
-        const service = new Service('Contadora', 'Contabilidade', 'SVC001', user);
-        service.register('Contadora', 'Contabilidade', 'SVC001');
+        const user = new User('Fernanda', '56789034', 'Caruaru/PE', '(81)990436789', '@fernanda_confecoes');
+        const service = new Service('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas', user);
+        service.register('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas');
 
-        expect(() => service.register('Contadora', 'Contabilidade', 'SVC001')).toThrow('Erro, serviço já cadastrado');
+        expect(() => service.register('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas')).toThrow('Erro, serviço já cadastrado');
         expect(Service.services.length).toBe(1);
     });
 
@@ -37,18 +38,18 @@ describe('Service Class', () => {
         const invalidUser = {};
 
         const createProductWithInvalidUser = () => {
-            new Service('Contadora', 'Contabilidade', 'SVC001', invalidUser);
+            new Service('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas', invalidUser);
         };
 
         expect(createProductWithInvalidUser).toThrowError('Informe um usuário válido');
     });
 
     test('Buscar serviço por nome', () => {
-        const user = new User('Flávia', '123456789', 'Recife', 'Pernambuco');
-        const service1 = new Service('Maquiadora', 'Maquiagem', 'SVC001', user);
-        const service2 = new Service('Cabelereira', 'Penteados', 'SVC002', user);
-        service1.register('Maquiadora', 'Maquiagem', 'SVC001');
-        service2.register('Cabelereira', 'Penteados', 'SVC002');
+        const user = new User('Patrícia', '123456789', 'João Pessoa/PB', '(82)9888774466', '@PatyMakeup');
+        const service1 = new Service('Maquiadora', 'Maquiagem', 'SVC001', 'Maquiagens para todos os tipos de eventos', user);
+        const service2 = new Service('Cabelereira', 'Penteados', 'SVC002', 'Penteados para todas as ocasiões', user);
+        service1.register('Maquiadora', 'Maquiagem', 'SVC001', 'Maquiagens para todos os tipos de eventos');
+        service2.register('Cabelereira', 'Penteados', 'SVC002', 'Penteados para todas as ocasiões');
 
         const results = Service.findServiceByName('Maquiadora');
 
@@ -56,14 +57,15 @@ describe('Service Class', () => {
         expect(results[0].name).toBe('Maquiadora');
         expect(results[0].category).toBe('Maquiagem');
         expect(results[0].id).toBe('SVC001');
+        expect(results[0].description).toBe('Maquiagens para todos os tipos de eventos');
     });
 
     test('Buscar serviço por categoria', () => {
-        const user = new User('Roberta', '123456789', 'Recife', 'Pernambuco');
-        const service1 = new Service('Cozinheira', 'Serviços domésticos', 'SVC001', user);
-        const service2 = new Service('Faxineira', 'Serviços domésticos', 'SVC002', user);
-        service1.register('Cozinheira', 'Serviços domésticos', 'SVC001');
-        service2.register('Faxineira', 'Serviços domésticos', 'SVC002');
+        const user = new User('Roberta', '123456789', 'Recife/PE', '(81)997354422', '@RobertaSilva');
+        const service1 = new Service('Cozinheira', 'Serviços domésticos', 'SVC001', 'Ofereço serviço de personal chef', user);
+        const service2 = new Service('Faxineira', 'Serviços domésticos', 'SVC002', 'Faço faxinas em Recife e região metropolitana', user);
+        service1.register('Cozinheira', 'Serviços domésticos', 'SVC001', 'Ofereço serviço de personal chef');
+        service2.register('Faxineira', 'Serviços domésticos', 'SVC002', 'Faço faxinas em Recife e região metropolitana');
 
         const results = Service.findServiceByCategory('Serviços domésticos');
 
@@ -72,16 +74,18 @@ describe('Service Class', () => {
         expect(results[1].name).toBe('Faxineira');
         expect(results[0].category).toBe('Serviços domésticos');
         expect(results[1].category).toBe('Serviços domésticos');
+        expect(results[0].description).toBe('Ofereço serviço de personal chef');
+        expect(results[1].description).toBe('Faço faxinas em Recife e região metropolitana');
     });
 
     test('Adiciona avaliação ao serviço', () => {
-        const user = new User("Beatriz", "121564943121", "Recife", "Pernambuco");
-        const service = new Service('Contadora', 'Contabilidade', 'SVC001', user);
+        const user = new User('Fernanda', '56789034', 'Caruaru/PE', '(81)990436789', '@fernanda_confecoes');
+        const service = new Service('Contadora', 'Contabilidade', 'SVC001', 'Presto serviços de contabilidade para pessoas autônomas', user);
 
         const review = {
             name: 'Alice',
             nota: 7,
-            description: 'Bom serviço prestado pela Beatriz!',
+            description: 'Bom serviço prestado pela Fernanda!',
         };
 
         service.addReview(review);
@@ -91,8 +95,8 @@ describe('Service Class', () => {
     });
 
     test('Retorna corretamente para serviço sem avaliações', () => {
-        const user = new User('Flávia', '123456789', 'Recife', 'Pernambuco');
-        const service = new Service('Maquiadora', 'Maquiagem', 'SVC001', user);
+        const user = new User('Patrícia', '123456789', 'João Pessoa/PB', '(82)9888774466', '@PatyMakeup');
+        const service = new Service('Maquiadora', 'Maquiagem', 'SVC001', 'Maquiagens para todos os tipos de eventos', user);
 
         const formattedReviews = service.getReviews();
 
@@ -102,8 +106,8 @@ describe('Service Class', () => {
     });
 
     test('Retorna avaliações formatadas', () => {
-        const user = new User('Roberta', '123456789', 'Recife', 'Pernambuco');
-        const service = new Service('Cozinheira', 'Serviços domésticos', 'SVC001', user);
+        const user = new User('Roberta', '123456789', 'Recife/PE', '(81)997354422', '@RobertaSilva');
+        const service = new Service('Cozinheira', 'Serviços domésticos', 'SVC001', 'Ofereço serviço de personal chef', user);
 
         service.addReview({
             name: 'Avaliadora 1',

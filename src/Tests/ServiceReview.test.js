@@ -8,8 +8,8 @@ describe('ServiceReview Class', () => {
     });
 
     test('Criar uma avaliação válida', () => {
-        const user = new User('Roberta', '123456789', 'Recife', 'Pernambuco');
-        const service = new Service('Cozinheira', 'Serviços domésticos', 'SVC001', user);
+        const user = new User('Patrícia', '123456789', 'João Pessoa/PB', '(82)9888774466', '@PatyMakeup');
+        const service = new Service('Maquiadora', 'Maquiagem', 'SVC001', 'Maquiagens para todos os tipos de eventos', user);
 
         const review = new ServiceReview('Emilly', '9', 'Serviço de boa qualidade', service);
 
@@ -25,8 +25,8 @@ describe('ServiceReview Class', () => {
     });
 
     test('Obter lista de avaliações', () => {
-        const user = new User('Roberta', '123456789', 'Recife', 'Pernambuco');
-        const service = new Service('Cozinheira', 'Serviços domésticos', 'SVC001', user);
+        const user = new User('Patrícia', '123456789', 'João Pessoa/PB', '(82)9888774466', '@PatyMakeup');
+        const service = new Service('Maquiadora', 'Maquiagem', 'SVC001', 'Maquiagens para todos os tipos de eventos', user);
 
         const review1 = new ServiceReview('Emilly', '9', 'Serviço de boa qualidade', service);
         const review2 = new ServiceReview('Alice', '8', 'Ótimo serviço', service);
