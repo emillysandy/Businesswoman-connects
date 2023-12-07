@@ -3,15 +3,17 @@ const User = require('./User');
 class Product {
     name;
     category;
-    id
-    user
+    id;
+    user;
+    description;
     static products = [];
     reviews = [];
 
-    constructor(name, category, id, user) {
+    constructor(name, category, id, description, user) {
         if ((user instanceof User)) {
             this.name = name;
             this.id = id;
+            this.description = description;
             this.category = category;
             this.reviews = [];
             this.user = user;
@@ -20,7 +22,7 @@ class Product {
         }
     }
 
-    register(name, category, id){
+    register(name, category, id, description){
         const isDuplicate = Product.products.some(
             (product) => product.id === id
         );
@@ -29,6 +31,7 @@ class Product {
             this.name = name;
             this.id = id;
             this.category = category;
+            this.description = description;
     
             Product.products.push(this);
     
