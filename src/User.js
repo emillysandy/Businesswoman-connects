@@ -1,19 +1,22 @@
 class User {
     name;
-    document
-    city;
-    state;
+    document;
+    adress;
+    phone;
+    instagram;
     static data = [];
 
-    constructor(name, document, city, state) {
+    constructor(name, document, adress, phone, instagram) {
         this.name = name;
         this.document = document;
-        this.city = city;
-        this.state = state;
+        this.adress = adress;
+        this.phone = phone;
+        this.instagram = instagram;
+
         User.data.push(this)
     }
   
-    register(name, document, city, state){
+    register(name, document, adress, phone, instagram){
         const isDuplicate = User.data.some(
             (data) => data.document === document
         );
@@ -21,8 +24,9 @@ class User {
         if (!isDuplicate) {
             this.name = name;
             this.document = document;
-            this.city = city;
-            this.state = state;
+            this.adress = adress;
+            this.phone = phone;
+            this.instagram = instagram;
     
             return "Usuário cadastrado com sucesso!";
         } else {
