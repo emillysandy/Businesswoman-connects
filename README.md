@@ -23,7 +23,9 @@ Para executar os testes pode utilizar:
 `npm run test` ou `npm run test:coverage`
 
 ## Diagrama UML
-![Alt text](image.png)
+<h6 align="center">
+  <img src="assets/image.png" alt="UML" width="550">
+</h6>
 
 ## Melhorias futuras
 - Adicionar validação para o documento do usuário, podendo ser CPF ou CNPJ.
