@@ -84,7 +84,7 @@ describe('Service Class', () => {
 
         const review = {
             name: 'Alice',
-            nota: 7,
+            avaliation: 7,
             description: 'Bom serviço prestado pela Fernanda!',
         };
 
@@ -93,38 +93,4 @@ describe('Service Class', () => {
         expect(service.reviews.length).toBe(1);
         expect(service.reviews[0]).toEqual(review);
     });
-
-    test('Retorna corretamente para serviço sem avaliações', () => {
-        const user = new User('Patrícia', '123456789', 'João Pessoa/PB', '(82)9888774466', '@PatyMakeup');
-        const service = new Service('Maquiadora', 'Maquiagem', 'SVC001', 'Maquiagens para todos os tipos de eventos', user);
-
-        const formattedReviews = service.getReviews();
-
-        const expectedOutput = 'Este serviço ainda não possui avaliações.';
-
-        expect(formattedReviews).toBe(expectedOutput);
-    });
-
-    test('Retorna avaliações formatadas', () => {
-        const user = new User('Roberta', '123456789', 'Recife/PE', '(81)997354422', '@RobertaSilva');
-        const service = new Service('Cozinheira', 'Serviços domésticos', 'SVC001', 'Ofereço serviço de personal chef', user);
-
-        service.addReview({
-            name: 'Avaliadora 1',
-            nota: 9,
-            description: 'Ótimo serviço!',
-        });
-        service.addReview({
-            name: 'Avaliadora 2',
-            nota: 10,
-            description: 'Excelente!',
-        });
-
-        const formattedReviews = service.getReviews();
-
-        const expectedOutput = 'Avaliadora 1 - Nota: 9, Descrição: Ótimo serviço!\nAvaliadora 2 - Nota: 10, Descrição: Excelente!';
-
-        expect(formattedReviews).toBe(expectedOutput);
-    });
-
 });

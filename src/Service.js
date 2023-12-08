@@ -45,7 +45,7 @@ class Service {
         return services.map((service) => {
             const reviewsInfo = service.reviews.map((review) => ({
                 name: review.name,
-                nota: review.nota,
+                avaliation: review.avaliation,
                 description: review.description,
             }));
 
@@ -73,18 +73,6 @@ class Service {
 
     addReview(review) {
         this.reviews.push(review);
-    }
-
-    getReviews() {
-        if (this.reviews.length === 0) {
-            return 'Este serviço ainda não possui avaliações.';
-        }
-
-        const formattedReviews = this.reviews.map((review) => {
-            return `${review.name} - Nota: ${review.nota}, Descrição: ${review.description}`;
-        });
-
-        return formattedReviews.join('\n');
     }
 }
 

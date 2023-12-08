@@ -3,9 +3,9 @@ const Product = require('../src/Product');
 class ProductReview {
     static reviews = [];
 
-    constructor(name, nota, description, product) {
+    constructor(name, avaliation, description, product) {
         this.name = name;
-        this.nota = nota;
+        this.avaliation = avaliation;
         this.description = description;
         
         if (product instanceof Product) {
@@ -17,10 +17,6 @@ class ProductReview {
 
         ProductReview.reviews.push(this);
         return "Avaliação feita com sucesso"
-    }
-
-    static getReviews() {
-        return ProductReview.reviews;
     }
 }
 

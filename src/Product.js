@@ -4,11 +4,11 @@ class Product {
     name;
     category;
     id;
-    user;
     description;
-    static products = [];
     reviews = [];
-
+    user;
+    static products = [];
+    
     constructor(name, category, id, description, user) {
         if ((user instanceof User)) {
             this.name = name;
@@ -45,7 +45,7 @@ class Product {
         return products.map((product) => {
             const reviewsInfo = product.reviews.map((review) => ({
                 name: review.name,
-                nota: review.nota,
+                avaliation: review.avaliation,
                 description: review.description,
             }));
 
@@ -73,18 +73,6 @@ class Product {
 
     addReview(review) {
         this.reviews.push(review);
-    }
-
-    getReviews() {
-        if (this.reviews.length === 0) {
-            return 'Este produto ainda não possui avaliações.';
-        }
-
-        const formattedReviews = this.reviews.map((review) => {
-            return `${review.name} - Nota: ${review.nota}, Descrição: ${review.description}`;
-        });
-
-        return formattedReviews.join('\n');
     }
 }
 

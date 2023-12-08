@@ -85,7 +85,7 @@ describe('Product Class', () => {
 
         const review = {
             name: 'Alice',
-            nota: 9,
+            avaliation: 9,
             description: 'Sandra fornce bolsas personalizadas de ótima qualidade',
         };
 
@@ -93,38 +93,5 @@ describe('Product Class', () => {
 
         expect(product.reviews.length).toBe(1);
         expect(product.reviews[0]).toEqual(review);
-    });
-
-    test('Deve rotornar corretamente um produto sem avaliações', () => {
-        const user = new User('Sandra', '123456789', 'Jaboatão dos Guararapes/PE', '(81)982838486', '@sandramodas');
-        const product = new Product('Bolsa', 'Acessório', 'PRD001', 'Bolsas personalizadas para seu evento', user);
-
-        const formattedReviews = product.getReviews();
-
-        const expectedOutput = 'Este produto ainda não possui avaliações.';
-
-        expect(formattedReviews).toBe(expectedOutput);
-    });
-
-    test('Deve retornar avaliações formatadas', () => {
-        const user = new User('Sandra', '123456789', 'Jaboatão dos Guararapes/PE', '(81)982838486', '@sandramodas');
-        const product = new Product('Bolsa', 'Acessório', 'PRD001', 'Bolsas personalizadas para seu evento', user);
-
-        product.addReview({
-            name: 'Avaliador 1',
-            nota: 4,
-            description: 'Ótimo serviço!',
-        });
-        product.addReview({
-            name: 'Avaliador 2',
-            nota: 5,
-            description: 'Excelente!',
-        });
-
-        const formattedReviews = product.getReviews();
-
-        const expectedOutput = 'Avaliador 1 - Nota: 4, Descrição: Ótimo serviço!\nAvaliador 2 - Nota: 5, Descrição: Excelente!';
-
-        expect(formattedReviews).toBe(expectedOutput);
     });
 });

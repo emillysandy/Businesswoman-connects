@@ -3,9 +3,9 @@ const Service = require('../src/Service');
 class ServiceReview {
     static reviews = [];
 
-    constructor(name, nota, description, service) {
+    constructor(name, avaliation, description, service) {
         this.name = name;
-        this.nota = nota;
+        this.avaliation = avaliation;
         this.description = description;
         
         if (service instanceof Service) {
@@ -17,10 +17,6 @@ class ServiceReview {
 
         ServiceReview.reviews.push(this);
         return "Avaliação feita com sucesso"
-    }
-
-    static getReviews() {
-        return ServiceReview.reviews;
     }
 }
 
