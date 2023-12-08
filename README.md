@@ -10,18 +10,22 @@ O projeto *"Mulher de Negócios"* tem como missão centralizar e fortalecer a pr
 
 ## Como rodar o projeto em sua máquina
 ```
-    # git clone https://github.com/emillysandy/Businesswoman-connects
-    
-    # cd Businesswoman-connects
-    
-    # npm install
-    
-    # executar o projeto
+# git clone https://github.com/emillysandy/Businesswoman-connects
+
+# cd Businesswoman-connects
+
+# npm install
+
+# executar o projeto
 ```
 ## Testes
 Para executar os testes pode utilizar:
 `npm run test` ou `npm run test:coverage`
 
 ## Diagrama UML
+![Alt text](image.png)
 
 ## Melhorias futuras
+- Adicionar validação para o documento do usuário, podendo ser CPF ou CNPJ.
+- Destrinchar melhor as classes de Produto e Serviço para que possam ter menos responsabilidades.
+- Fazer um média de avaliações dos produtos e serviços, para quando algum usuário fizer a busca por nome ou categoria apareça a lista ordenada por nota.
